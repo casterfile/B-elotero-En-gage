@@ -263,7 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_MyAsset\_Script\GameController.cs" />
-    <Compile Include="Assets\_MyAsset\_Script\GameController1.cs" />
     <Compile Include="Assets\_MyAsset\_Script\GVar.cs" />
     <Compile Include="Assets\_MyAsset\_Script\LoadSceneWhenClick.cs" />
     <Compile Include="Assets\_MyAsset\_Script\WinLostDisplay.cs" />

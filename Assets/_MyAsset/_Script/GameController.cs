@@ -5,61 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
-    float timeLeft = 6.0f;
-    public Text CountD;
-    public GameObject PT1, PT2, PT3, PT4, PT5, PT6, PT7, PT8, PT9;
+    float timeLeft = 60.0f, ScoreNum  = 00.0f;
+    public Text CountD , TxtScoreNum;
+    public GameObject PT1, PT2, PT3, btnWrongTouch, btnTouch01;
     
     // Use this for initialization
     void Start () {
-        GVar.isWin = false;
+        ReloadGame();
 
-        PT1.SetActive(false);
-        PT2.SetActive(false);
-        PT3.SetActive(false);
-        PT4.SetActive(false);
-        PT5.SetActive(false);
-        PT6.SetActive(false);
-        PT7.SetActive(false);
-        PT8.SetActive(false);
-        PT9.SetActive(false);
 
-        int DataRan = Random.Range(0, 9);
-        if (DataRan == 1)
-        {
-            PT1.SetActive(true);
-        }
-        else if (DataRan == 2)
-        {
-            PT2.SetActive(true);
-        }
-        else if (DataRan == 3)
-        {
-            PT3.SetActive(true);
-        }
-        else if (DataRan == 4)
-        {
-            PT4.SetActive(true);
-        }
-        else if (DataRan == 5)
-        {
-            PT5.SetActive(true);
-        }
-        else if (DataRan == 6)
-        {
-            PT6.SetActive(true);
-        }
-        else if (DataRan == 7)
-        {
-            PT7.SetActive(true);
-        }
-        else if (DataRan == 8)
-        {
-            PT8.SetActive(true);
-        }
-        else
-        {
-            PT9.SetActive(true);
-        }
     }
 	
 	// Update is called once per frame
@@ -84,7 +38,42 @@ public class GameController : MonoBehaviour {
     public void ClickWinGame()
     {
         print("Game Win");
-        GVar.isWin = true;
+        
         SceneManager.LoadScene("Scene04");
+    }
+
+    public void Touch01Win()
+    {
+        TxtScoreNum.text = "10";
+        GVar.isWin = true;
+        PT1.SetActive(false);
+        PT2.SetActive(false);
+        PT3.SetActive(true);
+        btnWrongTouch.SetActive(false);
+        btnTouch01.SetActive(false);
+    }
+
+    public void WrongTouch()
+    {
+        GVar.isWin = false;
+        PT1.SetActive(false);
+        PT2.SetActive(true);
+        PT3.SetActive(false);
+        btnWrongTouch.SetActive(false);
+        btnTouch01.SetActive(false);
+    }
+
+    public void ReloadGame()
+    {
+        timeLeft = 61.0f;
+        ScoreNum = 0f;
+        TxtScoreNum.text = ScoreNum + "0";
+        GVar.isWin = false;
+
+        PT1.SetActive(true);
+        PT2.SetActive(false);
+        PT3.SetActive(false);
+        btnWrongTouch.SetActive(true);
+        btnTouch01.SetActive(true);
     }
 }
